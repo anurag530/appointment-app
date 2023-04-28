@@ -42,7 +42,7 @@
                     description,
                     category
                 }
-                axios.post("https://crudcrud.com/api/4d2cee7022df473999729ae5c3cffd7e/expenseApp",obj)
+                axios.post("https://crudcrud.com/api/b36e81af0fbe463d8afba2ed275bdfb0/expenseApp")
                 .then((response)=>{
                     showuseronScreen(response.data)
                     //console.log(response)
@@ -53,6 +53,19 @@
                 //localStorage.setItem(obj.category,JSON.stringify(obj));
                 //showuseronScreen(obj)
             }
+              
+            window.addEventListener("DOMContentLoaded",()=>{
+                axios.get("https://crudcrud.com/api/b36e81af0fbe463d8afba2ed275bdfb0/expenseApp")
+                .then((response)=>{
+                    console.log(response)
+                    for(var i=0;i<response.data.length;i++){
+                        showuseronScreen(response.data[i])
+                    }
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
+            })
             function showuseronScreen(obj){
                 
                 const parentElem=document.getElementById('listofitems')
